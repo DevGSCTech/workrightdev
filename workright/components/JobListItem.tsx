@@ -19,15 +19,10 @@ const JobListItem = ({
       <Image source={{ uri: job.image }} style={styles.image} />
       <View style={styles.rightContainer}>
         <Text style={styles.title}>{job.title}</Text>
-        <Text style={styles.description}>
-          Stay at this apartment for an affordable price
-        </Text>
-
+        <Text style={styles.description}>{job.description}</Text>
         <View style={styles.footer}>
-          <Text style={styles.price}>$ {job.price} night</Text>
-          <Text style={styles.price}>
-            ★ {job.rating} ({job.numberOfStars})
-          </Text>
+          <Text style={styles.price}>$ {job.price}/hr ({job.numberOfHours} hours)</Text>
+          <Text style={styles.price}> ★{job.rating} stars</Text>
         </View>
       </View>
     </View>
