@@ -21,7 +21,7 @@ const CustomMarker = ({ job, onPress }: { job: any, onPress: any }) => {
           borderRadius: 20,
         }}
       >
-        <Text style={{ fontFamily: 'InterBold' }}>$ {job.price}</Text>
+        <Text style={{ fontFamily: 'InterBold' }}>$ {job.price * job.numberOfHours}</Text>
       </View>
     </Marker>
   );
