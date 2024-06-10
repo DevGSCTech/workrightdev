@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react';
-import { StyleSheet } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { StyleSheet, Text, View  } from 'react-native';
+import MapView from 'react-native-maps';
+//import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import JobListItem from '@/components/JobListItem';
 import CustomMarker from '@/components/CustomMarker';
 import jobs from '@/assets/data/jobs.json';
-import { Text, View } from '@/components/Themed';
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 
@@ -21,14 +21,13 @@ export default function TabThreeScreen() {
     longitudeDelta: 0.0421,
   });
 
-  // variables
   const snapPoints = useMemo(() => [80, '50%', '90%'], []);
 
   return (
     <GestureHandlerRootView>
       <View>
-      <MapView  style={styles.map} region={mapRegion}> 
-      provider={PROVIDER_GOOGLE}
+      {/* <MapView  style={styles.map} region={mapRegion} provider={PROVIDER_GOOGLE}>  */}
+      <MapView  style={styles.map} region={mapRegion} > 
         {jobs.map((job) => (
           <CustomMarker
             key={job.id}
@@ -37,15 +36,14 @@ export default function TabThreeScreen() {
           />
         ))}
       </MapView>
-
-      {/* Display selected job */}
+      <Text>
       {selectedJob && (
         <JobListItem
           job={selectedJob}
           containerStyle={styles.selectedContainer}
         />
       )}
-
+</Text>
       <BottomSheet index={0} snapPoints={snapPoints}>
         <View style={{ flex: 1 }}>
           <Text style={styles.listTitle}>Over {jobs.length} places</Text>

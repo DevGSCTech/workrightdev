@@ -1,7 +1,5 @@
 import React from 'react';
-import {  StyleSheet, Image, ViewStyle  } from 'react-native';
-
-import { Text, View } from './Themed';
+import {  StyleSheet, Image, ViewStyle, Text, View   } from 'react-native';
 
 import jobs from '../assets/data/jobs.json';
 
