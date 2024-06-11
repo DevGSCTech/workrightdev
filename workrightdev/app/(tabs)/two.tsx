@@ -1,72 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Camera, CameraView, } from 'expo-camera';
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
+import { Camera, CameraView, useCameraPermissions } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 
 
 
 export default function TabTwoScreen() {
 
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-  const [cameraType, setCameraType] = useState<'front' | 'back'>('front');
-  const [isCameraReady, setIsCameraReady] = useState(false);
+  enum CameraType {
+    FRONT = 'front',
+    BACK = 'back',
+  }
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
-  }, []);
+  const [permission, requestPermission] = useCameraPermissions();
+  const [facing, setFacing] = useState<CameraType>(CameraType.FRONT);
 
-  if (hasPermission === null) {
+  if (!permission) {
+    // Camera permissions are still loading.
     return <View />;
   }
 
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
+  if (!permission.granted) {
+    // Camera permissions are not granted yet.
+    return (
+      <View style={styles.container}>
+        <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
   }
 
-  function toggleCameraType() {
-    setCameraType((prevType) => (prevType === 'front' ? 'back' : 'front'));
+  function toggleCameraFacing() {
+    setFacing((prevFacing) => (prevFacing === CameraType.BACK ? CameraType.FRONT : CameraType.BACK));
   }
-  const handleCameraReady = () => {
-    setIsCameraReady(true);
-  };
-
 
   return (
     <View style={styles.container}>
-      <CameraView
-        style={{ flex: 1 }}
-        onCameraReady={handleCameraReady}
-      >
-        {isCameraReady && (
-          <View style={styles.cameraControls}>
-            <TouchableOpacity onPress={toggleCameraType}>
-              <Ionicons name="camera-reverse" size={32} color="black" />
-            </TouchableOpacity>
-          </View>
-        )}
+      <CameraView style={styles.camera} facing={facing}>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+          <Ionicons name="camera-reverse" size={32} color="white" />
+          </TouchableOpacity>
+        </View>
       </CameraView>
     </View>
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-/*   separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  }, */
   camera: {
     flex: 1,
   },
@@ -85,13 +71,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: 'white',
-  },
-  cameraControls: {
-    flex: 1,
-    backgroundColor: 'transparent',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    marginBottom: 30,
   },
 });
