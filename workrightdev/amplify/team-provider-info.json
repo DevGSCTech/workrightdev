@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-workrightdev-dev-72e97-authRole",
+      "UnauthRoleArn": "arn:aws:iam::608670965626:role/amplify-workrightdev-dev-72e97-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::608670965626:role/amplify-workrightdev-dev-72e97-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-workrightdev-dev-72e97-deployment",
+      "UnauthRoleName": "amplify-workrightdev-dev-72e97-unauthRole",
+      "StackName": "amplify-workrightdev-dev-72e97",
+      "StackId": "arn:aws:cloudformation:us-east-1:608670965626:stack/amplify-workrightdev-dev-72e97/4c73e9e0-3306-11ef-a2e1-0e218af2555b",
+      "AmplifyAppId": "d3tk5kmk6o2w36"
+    }
+  }
+}

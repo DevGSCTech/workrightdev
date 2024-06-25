@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import ProfileScreenInfo from '@/components/EditScreenInfo';
+import ProfileScreenInfo from '@/components/ProfileScreenInfo';
 import { Text, View } from '@/components/Themed';
 
 export default function TabOneScreen() {
