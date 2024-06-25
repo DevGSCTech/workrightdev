@@ -10,6 +10,11 @@
       "StackName": "amplify-workrightdev-dev-72e97",
       "StackId": "arn:aws:cloudformation:us-east-1:608670965626:stack/amplify-workrightdev-dev-72e97/4c73e9e0-3306-11ef-a2e1-0e218af2555b",
       "AmplifyAppId": "d3tk5kmk6o2w36"
+    },
+    "categories": {
+      "auth": {
+        "workrightdevfb9e4210": {}
+      }
     }
   }
 }
