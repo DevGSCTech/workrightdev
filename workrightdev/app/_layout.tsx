@@ -13,6 +13,7 @@ import amplifyconfig from '../src/amplifyconfiguration.json';
 Amplify.configure(amplifyconfig);
 
 
+
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
