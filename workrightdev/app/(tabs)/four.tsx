@@ -1,13 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
-import PaymentScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import PaymentScreenInfo from '@/components/PaymentScreenInfo';
+
 
 export default function TabFourScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Payments Screen</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View style={styles.separator} />
       <PaymentScreenInfo path="app/(tabs)/four.tsx" />
     </View>
   );
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#ffffff',
   },
   title: {
     fontSize: 20,
