@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet, Button } from 'react-native';
 import { Camera, CameraView, useCameraPermissions } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 
+//known good code prior to camera saving photos
+
 
 
 export default function TabTwoScreen() {
